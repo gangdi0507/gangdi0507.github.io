@@ -3,100 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王者 & 瓦手遊攻略站</title>
+    <title>王者 & 瓦手遊攻略站 | 每日更新</title>
     <style>
+        :root {
+            --bg: #0a0e14;
+            --card: #131820;
+            --border: #1e2a38;
+            --gold: #f0c040;
+            --blue: #4da6ff;
+            --red: #ff4757;
+            --text: #c8d0da;
+            --sub: #7a8490;
+            --green: #2ed573;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang HK", sans-serif;
-            background: #0f1923;
-            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang HK", "Noto Sans HK", sans-serif;
+            background: var(--bg);
+            background-image: 
+                radial-gradient(ellipse at 20% 0%, rgba(240,192,64,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(77,166,255,0.04) 0%, transparent 50%);
+            color: var(--text);
             line-height: 1.6;
-            padding: 20px;
+            min-height: 100vh;
         }
-        .container { max-width: 750px; margin: 0 auto; }
-        h1 { font-size: 28px; color: #fbbf24; margin-bottom: 8px; }
-        .subtitle { color: #9ca3af; margin-bottom: 28px; font-size: 14px; }
-        .section-title { font-size: 20px; color: #60a5fa; margin: 24px 0 12px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+        
+        /* 顶部导航 */
+        .navbar {
+            background: rgba(19,24,32,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 20px;
+        }
+        .nav-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links { display: flex; gap: 18px; }
+        .nav-links a {
+            color: var(--sub);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* 主体 */
+        .container { max-width: 800px; margin: 0 auto; padding: 30px 20px 40px; }
+
+        /* 英雄区域头部 */
+        .hero {
+            text-align: center;
+            padding: 30px 0 20px;
+        }
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+        .hero .gradient-text {
+            background: linear-gradient(135deg, var(--gold), #ffaa00, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--sub);
+            font-size: 15px;
+        }
+
+        /* 统计条 */
+        .stats-bar {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 80px;
+        }
+        .stat-num { font-size: 22px; font-weight: 800; color: var(--gold); }
+        .stat-label { font-size: 11px; color: var(--sub); margin-top: 2px; }
+
+        /* 分类标题 */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 28px 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-icon { font-size: 22px; }
+
+        /* 文章卡片 */
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
         .post {
-            background: #1a2634;
-            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
             padding: 18px;
-            margin-bottom: 12px;
-            border: 1px solid #2a3a4a;
-            transition: border 0.2s;
+            transition: all 0.25s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        .post:hover { border-color: #fbbf24; }
+        .post:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .post::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .post:hover::before { opacity: 1; }
         .post a {
-            color: #fbbf24;
-            font-size: 17px;
+            color: #e8e8f0;
+            font-size: 15px;
             font-weight: 700;
             text-decoration: none;
+            display: block;
+            margin-bottom: 4px;
         }
-        .post a:hover { text-decoration: underline; }
-        .post p { color: #94a3b8; font-size: 13px; margin-top: 4px; }
-        .footer { text-align: center; margin-top: 30px; padding: 20px; color: #6b7280; font-size: 13px; border-top: 1px solid #1f2937; }
+        .post .tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+        .tag-wz { background: rgba(240,192,64,0.15); color: var(--gold); }
+        .tag-val { background: rgba(255,71,87,0.15); color: var(--red); }
+        .post p {
+            color: var(--sub);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* 公告栏 */
+        .announcement {
+            background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(77,166,255,0.06));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .announcement .icon { font-size: 20px; }
+        .announcement span { color: var(--sub); font-size: 13px; }
+        .announcement strong { color: var(--gold); }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--sub);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .footer a { color: var(--blue); text-decoration: none; }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 26px; }
+            .post-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 12px; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="logo">⚡ 攻略工作站</div>
+            <div class="nav-links">
+                <a href="#wz">王者榮耀</a>
+                <a href="#val">無畏契約</a>
+                <a href="#about">關於</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
     <div class="container">
-        <h1>🎮 王者 & 瓦手遊攻略站</h1>
-        <p class="subtitle">專注王者榮耀、無畏契約手遊攻略，每日更新</p>
-
-        <div class="section-title">🫅 王者榮耀 — 英雄攻略</div>
-
-        <div class="post">
-            <a href="sunwukong.html">【王者榮耀】孫悟空最強出裝&連招教學</a>
-            <p>存棍、跳棍、進場時機，一棒秒脆皮</p>
+        
+        <!-- 头部 -->
+        <div class="hero">
+            <h1>
+                <span style="color:#e8e8f0;">🎮 王者 & 瓦</span><br>
+                <span class="gradient-text">手遊攻略站</span>
+            </h1>
+            <p>每日更新 · 出裝連招 · 地圖教學 · 槍械解析</p>
         </div>
 
-        <div class="post">
-            <a href="jing.html">【王者榮耀】鏡飛雷神教學</a>
-            <p>連招詳解、最強出裝銘文，從入門到飛起來</p>
+        <!-- 统计 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">6</div>
+                <div class="stat-label">王者英雄</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">5</div>
+                <div class="stat-label">槍械教學</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">1</div>
+                <div class="stat-label">地圖攻略</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">📅</div>
+                <div class="stat-label">每日更新</div>
+            </div>
         </div>
 
-        <div class="section-title">🗺️ 無畏契約 — 地圖攻略</div>
-
-        <div class="post">
-            <a href="bind-map.html">【無畏契約】義境空島新手必學點位</a>
-            <p>進攻防守不迷路，傳送門使用技巧</p>
+        <!-- 公告 -->
+        <div class="announcement">
+            <span class="icon">📢</span>
+            <span>新手上路！<strong>孫悟空、鏡、瀾、馬超</strong>攻略已上線，更多英雄製作中！</span>
         </div>
 
-        <div class="section-title">🔫 無畏契約 — 槍械教學</div>
-
-        <div class="post">
-            <a href="val-rifle.html">【無畏契約】步槍教學</a>
-            <p>M4A1-S、AK-47、M16 壓槍與點射技巧</p>
+        <!-- 王者荣耀 -->
+        <div class="section-title" id="wz">
+            <span class="section-icon">🫅</span> 王者榮耀 — 英雄攻略
+        </div>
+        <div class="post-grid">
+            <div class="post">
+                <span class="tag tag-wz">刺客</span>
+                <a href="sunwukong.html">孫悟空</a>
+                <p>最強出裝 & 連招教學，存棍跳棍一棒秒脆皮</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-wz">刺客</span>
+                <a href="jing.html">鏡</a>
+                <p>飛雷神連招詳解，從入門到滿圖飛</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-wz">刺客</span>
+                <a href="lan.html">瀾</a>
+                <p>鯊魚王打野，殘血收割機抓人節奏</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-wz">戰士</span>
+                <a href="machao.html">馬超</a>
+                <p>插秧王連招教學，扔槍撿槍戳全場</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-wz">坦克</span>
+                <a href="lianpo.html">廉頗</a>
+                <p>最強開團坦克，團戰站到最後</p>
+            </div>
         </div>
 
-        <div class="post">
-            <a href="val-smg.html">【無畏契約】衝鋒槍教學</a>
-            <p>UMP45、MP5、P90 近戰之王</p>
+        <!-- 无畏契约 -->
+        <div class="section-title" id="val">
+            <span class="section-icon">🔫</span> 無畏契約 — 地圖 & 槍械
         </div>
-
-        <div class="post">
-            <a href="val-sniper.html">【無畏契約】狙擊槍教學</a>
-            <p>AWP瞬狙、跳狙、架點技巧</p>
-        </div>
-
-        <div class="footer">
-            🎮 每日更新攻略 | 歡迎分享給戰友 | 持續更新中
+        <div class="post-grid">
+            <div class="post">
+                <span class="tag tag-val">地圖</span>
+                <a href="bind-map.html">義境空島</a>
+                <p>新手必學防守點位，傳送門戰術</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-val">步槍</span>
+                <a href="val-rifle.html">步槍教學</a>
+                <p>M4A1-S、AK-47、M16 壓槍技巧</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-val">衝鋒槍</span>
+                <a href="val-smg.html">衝鋒槍教學</a>
+                <p>UMP45、MP5、P90 近戰之王</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-val">狙擊槍</span>
+                <a href="val-sniper.html">狙擊槍教學</a>
+                <p>AWP瞬狙、跳狙、架點技巧</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-val">手槍</span>
+                <a href="val-pistol.html">手槍教學</a>
+                <p>沙漠之鷹、USP、Glock 手槍局必勝</p>
+            </div>
+            <div class="post">
+                <span class="tag tag-val">霰彈槍</span>
+                <a href="val-shotgun.html">霰彈槍教學</a>
+                <p>連噴、單噴、短噴 近戰秒殺</p>
+            </div>
         </div>
     </div>
+
+    <!-- 页脚 -->
+    <div class="footer" id="about">
+        <p>🎮 每日更新王者榮耀 & 無畏契約手遊攻略</p>
+        <p style="margin-top:4px;">網站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
+        <p style="margin-top:8px;color:#555;">© 2026 攻略工作站 · 用❤️發電</p>
+    </div>
+
 </body>
 </html>
-<div class="post">
-    <a href="val-pistol.html">【無畏契約】手槍教學</a>
-    <p>沙漠之鷹、USP、Glock 手槍局必勝</p>
-</div>
-<div class="post">
-    <a href="val-shotgun.html">【無畏契約】霰彈槍教學</a>
-    <p>連噴、單噴、短噴 近戰秒殺攻略</p>
-</div>
-<div class="post">
-    <a href="machao.html">【王者榮耀】馬超教學</a>
-    <p>插秧王連招、出裝銘文，從入門到滿圖飛</p>
-</div>
-<div class="post">
-    <a href="lan.html">【王者榮耀】瀾教學</a>
-    <p>鯊魚王打野連招、抓人節奏，殘血收割機</p>
-</div>

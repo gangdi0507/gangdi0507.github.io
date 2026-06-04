@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王者 & 瓦手遊攻略站 | 每日更新</title>
+    <title>王者 & 瓦手遊攻略站</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0e14">
     <style>
         :root {
             --bg: #0a0e14;
@@ -27,8 +29,6 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-        
-        /* 顶部导航 */
         .navbar {
             background: rgba(19,24,32,0.95);
             backdrop-filter: blur(20px);
@@ -62,11 +62,7 @@
             transition: 0.2s;
         }
         .nav-links a:hover { color: var(--gold); }
-
-        /* 主体 */
         .container { max-width: 800px; margin: 0 auto; padding: 30px 20px 40px; }
-
-        /* 英雄区域头部 */
         .hero {
             text-align: center;
             padding: 30px 0 20px;
@@ -86,8 +82,6 @@
             color: var(--sub);
             font-size: 15px;
         }
-
-        /* 统计条 */
         .stats-bar {
             display: flex;
             gap: 12px;
@@ -105,8 +99,6 @@
         }
         .stat-num { font-size: 22px; font-weight: 800; color: var(--gold); }
         .stat-label { font-size: 11px; color: var(--sub); margin-top: 2px; }
-
-        /* 分类标题 */
         .section-title {
             font-size: 18px;
             font-weight: 700;
@@ -116,8 +108,6 @@
             gap: 8px;
         }
         .section-icon { font-size: 22px; }
-
-        /* 文章卡片 */
         .post-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -166,13 +156,12 @@
         }
         .tag-wz { background: rgba(240,192,64,0.15); color: var(--gold); }
         .tag-val { background: rgba(255,71,87,0.15); color: var(--red); }
+        .tag-other { background: rgba(46,213,115,0.15); color: var(--green); }
         .post p {
             color: var(--sub);
             font-size: 12px;
             line-height: 1.5;
         }
-
-        /* 公告栏 */
         .announcement {
             background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(77,166,255,0.06));
             border: 1px solid var(--border);
@@ -186,8 +175,6 @@
         .announcement .icon { font-size: 20px; }
         .announcement span { color: var(--sub); font-size: 13px; }
         .announcement strong { color: var(--gold); }
-
-        /* 页脚 */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -197,8 +184,6 @@
             margin-top: 30px;
         }
         .footer a { color: var(--blue); text-decoration: none; }
-
-        /* 响应式 */
         @media (max-width: 600px) {
             .hero h1 { font-size: 26px; }
             .post-grid { grid-template-columns: 1fr; }
@@ -209,7 +194,6 @@
 </head>
 <body>
 
-    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-inner">
             <div class="logo">⚡ 攻略工作站</div>
@@ -221,10 +205,8 @@
         </div>
     </nav>
 
-    <!-- 主内容 -->
     <div class="container">
         
-        <!-- 头部 -->
         <div class="hero">
             <h1>
                 <span style="color:#e8e8f0;">🎮 王者 & 瓦</span><br>
@@ -233,7 +215,6 @@
             <p>每日更新 · 出裝連招 · 地圖教學 · 槍械解析</p>
         </div>
 
-        <!-- 统计 -->
         <div class="stats-bar">
             <div class="stat-item">
                 <div class="stat-num">6</div>
@@ -253,13 +234,11 @@
             </div>
         </div>
 
-        <!-- 公告 -->
         <div class="announcement">
             <span class="icon">📢</span>
-            <span>新手上路！<strong>孫悟空、鏡、瀾、馬超</strong>攻略已上線，更多英雄製作中！</span>
+            <span>新手上路！<strong>孫悟空、鏡、瀾、馬超</strong>攻略已上線，手機可安裝App！</span>
         </div>
 
-        <!-- 王者荣耀 -->
         <div class="section-title" id="wz">
             <span class="section-icon">🫅</span> 王者榮耀 — 英雄攻略
         </div>
@@ -291,7 +270,6 @@
             </div>
         </div>
 
-        <!-- 无畏契约 -->
         <div class="section-title" id="val">
             <span class="section-icon">🔫</span> 無畏契約 — 地圖 & 槍械
         </div>
@@ -327,19 +305,36 @@
                 <p>連噴、單噴、短噴 近戰秒殺</p>
             </div>
         </div>
+
+        <div class="section-title" id="other">
+            <span class="section-icon">📚</span> 其他攻略 & 科普
+        </div>
+        <div class="post-grid">
+            <div class="post">
+                <span class="tag tag-other">科普</span>
+                <a href="anti-cheat.html">反作弊系統揭秘</a>
+                <p>遊戲公司如何檢測外掛？玩家如何保護自己？</p>
+            </div>
+        </div>
     </div>
 
-    <!-- 页脚 -->
     <div class="footer" id="about">
         <p>🎮 每日更新王者榮耀 & 無畏契約手遊攻略</p>
         <p style="margin-top:4px;">網站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
         <p style="margin-top:8px;color:#555;">© 2026 攻略工作站 · 用❤️發電</p>
     </div>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('Service Worker 註冊成功');
+                }).catch(function(err) {
+                    console.log('Service Worker 註冊失敗: ', err);
+                });
+            });
+        }
+    </script>
+
 </body>
 </html>
-<div class="post">
-    <span class="tag tag-val">科普</span>
-    <a href="anti-cheat.html">【必看】反作弊系統揭秘</a>
-    <p>遊戲公司如何檢測外掛？玩家如何保護自己？</p>
-</div>

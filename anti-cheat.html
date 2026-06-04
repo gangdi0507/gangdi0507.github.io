@@ -1,215 +1,84 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【反作弊科普】遊戲公司如何檢測外掛？玩家如何保護自己？</title>
+    <title>【科普】反作弊系统揭秘 | 游戏公司如何检测外挂</title>
+    <meta name="description" content="游戏公司如何检测外挂？普通玩家如何保护自己？一次讲清楚。">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang HK", "Microsoft YaHei", sans-serif;
-            background: #0a0e14;
-            color: #c8d0da;
-            line-height: 1.7;
-            padding: 20px;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; background: #0a0e14; color: #c8d0da; line-height: 1.7; padding: 20px; }
         .container { max-width: 750px; margin: 0 auto; }
-        .back-link { display: inline-block; color: #fbbf24; text-decoration: none; margin-bottom: 20px; font-weight: 600; font-size: 14px; }
-        .back-link:hover { text-decoration: underline; }
-        h1 {
-            font-size: 28px;
-            color: #fbbf24;
-            margin-bottom: 8px;
-            border-left: 4px solid #fbbf24;
-            padding-left: 14px;
-        }
-        .subtitle { color: #7a8490; margin-bottom: 28px; font-size: 14px; }
-        .section {
-            background: #131820;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            border: 1px solid #1e2a38;
-        }
+        .back-link { display: inline-block; color: #fbbf24; text-decoration: none; margin-bottom: 20px; font-weight: 600; }
+        h1 { font-size: 28px; color: #fbbf24; margin-bottom: 8px; border-left: 4px solid #fbbf24; padding-left: 14px; }
+        .subtitle { color: #7a8490; margin-bottom: 28px; }
+        .section { background: #131820; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #1e2a38; }
         .section h2 { font-size: 20px; color: #4da6ff; margin-bottom: 12px; }
         .section h3 { font-size: 16px; color: #fbbf24; margin: 14px 0 8px; }
-        .section p { margin-bottom: 10px; }
         .section ul, .section ol { padding-left: 20px; }
         .section li { margin-bottom: 6px; }
-        .highlight {
-            background: #1a1f2e;
-            border-left: 3px solid #fbbf24;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-            font-weight: 500;
-        }
-        .danger {
-            background: #1e1518;
-            border-left: 3px solid #ff4757;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-        }
-        .tip {
-            background: #151e18;
-            border-left: 3px solid #2ed573;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-        }
+        .highlight { background: #1a1f2e; border-left: 3px solid #fbbf24; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+        .danger { background: #1e1518; border-left: 3px solid #ff4757; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+        .tip { background: #151e18; border-left: 3px solid #2ed573; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
         .footer { text-align: center; margin-top: 30px; padding: 20px; color: #6b7280; font-size: 13px; border-top: 1px solid #1f2937; }
-        @media (max-width: 600px) {
-            h1 { font-size: 22px; }
-            .section { padding: 16px; }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← 返回攻略首頁</a>
-        
+        <a href="index.html" class="back-link">← 返回攻略首页</a>
         <h1>🛡️ 反作弊科普</h1>
-        <p class="subtitle">遊戲公司如何檢測外掛？普通玩家如何保護自己？一次講清楚</p>
+        <p class="subtitle">游戏公司如何检测外挂？普通玩家如何保护自己？</p>
 
-        <!-- 第一部分：外挂是什么 -->
         <div class="section">
-            <h2>📌 外掛是怎麼運作的？（簡單科普）</h2>
-            <p>外掛本質上是一個<strong>第三方程式</strong>，它會：</p>
-            <ul>
-                <li><strong>讀取遊戲記憶體</strong>：獲取敵人的位置、血量等資訊（透視）</li>
-                <li><strong>修改遊戲數據</strong>：改變子彈軌跡、射速（自瞄、無限子彈）</li>
-                <li><strong>模擬玩家操作</strong>：自動走位、自動技能（腳本）</li>
-            </ul>
-            <div class="highlight">
-                💡 <strong>一句話總結：</strong>外掛就是一個「偷看遊戲數據」或「替玩家操作」的非法程式。
-            </div>
+            <h2>🔍 游戏公司怎么检测外挂？</h2>
+            <h3>客户端扫描</h3>
+            <ul><li>反作弊系统持续扫描后台程序</li><li>发现可疑程序立刻标记</li></ul>
+            <h3>服务器端数据分析</h3>
+            <ul><li>记录爆头率、反应时间、准星移动轨迹</li><li>AI机器学习分析行为模式</li></ul>
+            <h3>玩家举报系统</h3>
+            <ul><li>多人举报同一玩家 → 系统优先审查</li></ul>
+            <div class="tip">🛡️ 开挂一定被抓，只是时间问题。反作弊系统会定期批量封号。</div>
         </div>
 
-        <!-- 第二部分：如何检测 -->
         <div class="section">
-            <h2>🔍 遊戲公司怎麼檢測外掛？</h2>
-            
-            <h3>方法一：客戶端掃描（你電腦上的檢測）</h3>
+            <h2>👁️ 常见外挂类型</h2>
             <ul>
-                <li>反作弊系統（如Vanguard、騰訊安全中心）在你玩遊戲時<strong>持續掃描後台程式</strong></li>
-                <li>一旦發現可疑程式（外掛、修改器、注入器），立刻標記</li>
-                <li>部分反作弊系統（如無畏契約的Vanguard）<strong>開機就啟動</strong>，權限極高</li>
+                <li><strong>透视：</strong>敌人总是预先瞄准你出来的位置</li>
+                <li><strong>自瞄：</strong>准星瞬间锁定敌人头部</li>
+                <li><strong>加速/瞬移：</strong>移动速度明显异常</li>
             </ul>
-
-            <h3>方法二：伺服器端數據分析（行為檢測）</h3>
-            <ul>
-                <li>伺服器會記錄你的<strong>爆頭率、反應時間、準星移動軌跡</strong></li>
-                <li>如果數據異常（例如100%爆頭率、0.01秒反應），系統會自動標記</li>
-                <li>AI機器學習會分析你的行為模式，比對外掛玩家的特徵</li>
-            </ul>
-
-            <h3>方法三：玩家舉報系統</h3>
-            <ul>
-                <li>多人舉報同一玩家 → 系統優先審查</li>
-                <li>部分遊戲有「監管系統」：資深玩家觀看錄像判斷是否開掛</li>
-            </ul>
-
-            <div class="tip">
-                🛡️ <strong>意思是：</strong>你開掛一定被抓，只是時間問題。今天沒事不代表明天安全。反作弊系統會定期「秋後算帳」批量封號。
-            </div>
         </div>
 
-        <!-- 第三部分：常见外挂类型及特征 -->
         <div class="section">
-            <h2>👁️ 常見外掛類型 & 如何識別對手開掛</h2>
-            
-            <h3>透視（Wallhack）</h3>
+            <h2>🔒 如何保护自己</h2>
             <ul>
-                <li>特徵：敵人總是<strong>預先瞄準你出來的位置</strong></li>
-                <li>沒有任何資訊（腳步、技能視野）卻知道你躲在哪</li>
-                <li>煙霧彈、閃光彈對他沒影響</li>
+                <li>不要买外挂（大部分是木马病毒）</li>
+                <li>不要借号给陌生人</li>
+                <li>不要下载来历不明的程序</li>
             </ul>
-
-            <h3>自瞄（Aimbot）</h3>
-            <ul>
-                <li>特徵：準星<strong>瞬間鎖定</strong>敵人頭部，軌跡不自然</li>
-                <li>每次爆頭位置一模一樣</li>
-                <li>觀戰視角可以看到準星「抖動」或「瞬移」</li>
-            </ul>
-
-            <h3>加速/瞬移</h3>
-            <ul>
-                <li>特徵：移動速度明顯異常</li>
-                <li>角色瞬間出現在不該出現的位置</li>
-            </ul>
-
-            <div class="highlight">
-                💡 <strong>遇到疑似外掛怎麼辦？</strong>不要罵人，直接舉報。罵人可能害自己被禁言。
-            </div>
         </div>
 
-        <!-- 第四部分：如何保护自己 -->
         <div class="section">
-            <h2>🔒 普通玩家如何保護自己？</h2>
-            
-            <h3>不要買外掛</h3>
+            <h2>💀 开挂后果</h2>
             <ul>
-                <li>大部分「付費外掛」其實是<strong>木馬病毒</strong></li>
-                <li>你的帳號密碼、個人資料可能被盜</li>
-                <li>甚至電腦被植入挖礦病毒或勒索軟件</li>
+                <li><strong>账号永久封禁</strong></li>
+                <li><strong>设备封禁</strong>（换号也没用）</li>
+                <li><strong>法律风险</strong></li>
             </ul>
-
-            <h3>不要借號給陌生人</h3>
-            <ul>
-                <li>別人用你的號開掛 → 你的號被封</li>
-                <li>「幫你上分」是常見騙局</li>
-            </ul>
-
-            <h3>不要下載來歷不明的程式</h3>
-            <ul>
-                <li>所謂的「免費皮膚」、「破解版」都是陷阱</li>
-                <li>只從官方渠道下載遊戲</li>
-            </ul>
-
-            <h3>如何正確舉報</h3>
-            <ol>
-                <li>遊戲結束後，在結算畫面點擊玩家名字旁的<strong>舉報按鈕</strong></li>
-                <li>選擇舉報原因（作弊/外掛）</li>
-                <li>如有錄影，附上影片連結（上傳到YouTube設為不公開）</li>
-            </ol>
-
-            <div class="danger">
-                ⚠️ <strong>重要提醒：</strong>如果你的帳號被盜並用於開掛，封號後<strong>幾乎不可能申訴成功</strong>。保護帳號等於保護你的錢和時間。
-            </div>
+            <div class="danger">⚠️ 开挂 = 用几天的爽感，换永久的损失。一点都不值得。</div>
         </div>
 
-        <!-- 第五部分：封号后果 -->
         <div class="section">
-            <h2>💀 開掛被發現的後果</h2>
+            <h2>🎯 总结</h2>
             <ul>
-                <li><strong>帳號永久封禁</strong>：你買的皮膚、英雄、段位全部歸零</li>
-                <li><strong>設備封禁</strong>：部分遊戲會鎖定你的電腦/手機硬體ID，換號也沒用</li>
-                <li><strong>法律風險</strong>：在香港，製作或傳播外掛可能違反《刑事罪行條例》及《版權條例》</li>
-                <li><strong>信用受損</strong>：遊戲帳號被封記錄可能影響你參加電競比賽或申請遊戲相關工作</li>
+                <li>反作弊系统远比你想的强大</li>
+                <li>开挂必被抓</li>
+                <li>遇到外挂 → 举报 → 拉黑 → 下一局</li>
             </ul>
-            <div class="danger">
-                ⚠️ <strong>一句話：</strong>開掛 = 用幾天的爽感，換永久的損失。一點都不值得。
-            </div>
+            <div class="tip">🏆 真正的强者靠练习，不靠外挂。实力是自己的，谁也拿不走。</div>
         </div>
 
-        <!-- 第六部分：总结 -->
-        <div class="section">
-            <h2>🎯 總結</h2>
-            <ul>
-                <li>遊戲公司的反作弊系統<strong>遠比你想像的強大</strong></li>
-                <li>開掛必被抓，只是時間早晚問題</li>
-                <li>保護自己的帳號，不要碰任何第三方非法程式</li>
-                <li>遇到外掛 → 舉報 → 拉黑 → 下一局</li>
-            </ul>
-            <div class="tip">
-                🏆 <strong>真正的強者靠練習，不靠外掛。</strong>與其花時間找外掛，不如多看幾篇攻略、多練幾局。實力是自己的，誰也拿不走。
-            </div>
-        </div>
-
-        <div class="footer">
-            🎮 王者 & 瓦手遊攻略站 | 每日更新 | 本頁為科普用途，旨在幫助玩家了解反作弊機制
-        </div>
+        <div class="footer">🎮 王者 & 瓦手游攻略站 | 每日更新</div>
     </div>
 </body>
 </html>

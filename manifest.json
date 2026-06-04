@@ -1,0 +1,18 @@
+{
+    "name": "王者 & 瓦手遊攻略站",
+    "short_name": "遊戲攻略",
+    "description": "專注王者榮耀、無畏契約手遊攻略，每日更新",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0e14",
+    "theme_color": "#f0c040",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>",
+            "sizes": "100x100",
+            "type": "image/svg+xml"
+        }
+    ],
+    "lang": "zh-HK"
+}

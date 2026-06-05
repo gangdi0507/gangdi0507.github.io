@@ -324,4 +324,91 @@
             <div class="support-card" style="background:linear-gradient(135deg,rgba(91,158,255,0.08),rgba(91,158,255,0.02));border-color:rgba(91,158,255,0.2);">
                 <div style="font-size:40px;margin-bottom:10px;">🔥</div>
                 <h3 style="color:#5b9eff;">私人定制英雄攻略</h3>
-                <p style="font-size:14px;margin-bottom:6px;"><strong>1个英雄 ¥10</strong> ｜ <strong>2个 ¥
+                <p style="font-size:14px;margin-bottom:6px;"><strong>1个英雄 ¥10</strong> ｜ <strong>2个 ¥15</strong> ｜ <strong>3个 ¥17</strong></p>
+                <p style="color:#94a3b8;font-size:12px;margin-bottom:16px;">24h出稿 · 含出装/铭文/连招/对线</p>
+                <button class="donate-btn btn-blue" onclick="document.getElementById('donatePopup').classList.add('show')">💳 页面付款下单</button>
+                <p style="color:#888;font-size:10px;margin-top:10px;">👆 扫码付款 · 备注英雄名+邮箱</p>
+            </div>
+        </div>
+    </div>
+
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+
+    <div class="donate-popup" id="donatePopup" onclick="this.classList.remove('show')">
+        <div class="donate-popup-content" onclick="event.stopPropagation()">
+            <h3 style="color:#ffd700;margin-bottom:6px;">💳 扫码付款</h3>
+            <p style="color:#94a3b8;font-size:13px;margin-bottom:4px;">🧋 赞赏 ¥6.66 ｜ 🔥 定制攻略 ¥10起</p>
+            <p style="color:#888;font-size:11px;margin-bottom:14px;">付完备注「英雄名+邮箱」，24h发攻略</p>
+            <div class="donate-codes">
+                <div class="donate-code-item">
+                    <img src="donate.png" alt="收款码1">
+                    <p>收款码 ①</p>
+                </div>
+                <div class="donate-code-item">
+                    <img src="2 donate.png" alt="收款码2">
+                    <p>收款码 ②</p>
+                </div>
+            </div>
+            <p style="color:#666;font-size:10px;">保存图片 → 微信/支付宝扫一扫 → 付款</p>
+            <button class="donate-close" onclick="document.getElementById('donatePopup').classList.remove('show')">关闭</button>
+        </div>
+    </div>
+
+    <div class="footer" id="about">
+        <p>🎮 每日更新王者荣耀 & 无畏契约手游攻略 · 共46篇</p>
+        <p style="margin-top:4px;">网站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
+        <p style="margin-top:4px;">📩 定制攻略 / 广告合作 请联系站长微信</p>
+        <p style="margin-top:8px;color:#555;">© 2026 攻略工作站 · 用爱发电</p>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('Service Worker 注册成功');
+                }).catch(function(err) {
+                    console.log('Service Worker 注册失败: ', err);
+                });
+            });
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        const allPosts = document.querySelectorAll('.post');
+        const postGrids = document.querySelectorAll('.post-grid');
+        const sectionTitles = document.querySelectorAll('.section-title');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query === '') {
+                postGrids.forEach(g => g.style.display = 'grid');
+                sectionTitles.forEach(t => t.style.display = 'flex');
+                allPosts.forEach(p => p.style.display = 'flex');
+                return;
+            }
+            
+            sectionTitles.forEach(t => t.style.display = 'block');
+            postGrids.forEach(g => g.style.display = 'grid');
+            
+            allPosts.forEach(post => {
+                const text = post.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    post.style.display = 'flex';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

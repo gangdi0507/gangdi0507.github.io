@@ -89,7 +89,6 @@
             opacity: 0; transition: opacity 0.3s;
         }
         #backToTop.show { opacity: 1; }
-        /* 赞赏弹窗 */
         .donate-popup {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 9999;
@@ -98,11 +97,11 @@
         .donate-popup.show { display: flex; }
         .donate-popup-content {
             background: #1a2634; border-radius: 16px; padding: 30px;
-            text-align: center; max-width: 360px; width: 90%;
+            text-align: center; max-width: 460px; width: 90%;
         }
-        .donate-popup-content img {
-            width: 200px; height: 200px; border-radius: 12px; margin-bottom: 12px;
-        }
+        .donate-codes { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+        .donate-code-item img { width: 180px; height: 180px; border-radius: 12px; }
+        .donate-code-item p { color: #7a8490; font-size: 11px; margin-top: 6px; }
         .donate-close {
             margin-top: 12px; background: #2a3a4a; color: #fff; border: none;
             padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 14px;
@@ -111,6 +110,7 @@
             .hero h1 { font-size: 26px; }
             .post-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; }
+            .donate-code-item img { width: 140px; height: 140px; }
         }
     </style>
 </head>
@@ -213,7 +213,7 @@
                 <h3>觉得攻略有用？</h3>
                 <p>请站长喝杯奶茶，支持继续更新更多攻略</p>
                 <button class="donate-btn" onclick="document.getElementById('donatePopup').classList.add('show')">🧋 请喝奶茶 (¥6.66)</button>
-                <p style="color:#555;font-size:11px;margin-top:10px;">微信扫码赞赏 · 支持站长持续更新</p>
+                <p style="color:#555;font-size:11px;margin-top:10px;">微信/支付宝扫码赞赏 · 支持站长持续更新</p>
             </div>
         </div>
     </div>
@@ -224,9 +224,18 @@
     <div class="donate-popup" id="donatePopup" onclick="this.classList.remove('show')">
         <div class="donate-popup-content" onclick="event.stopPropagation()">
             <h3 style="color:#fbbf24;margin-bottom:12px;">🧋 请站长喝杯奶茶</h3>
-            <p style="color:#94a3b8;font-size:13px;margin-bottom:16px;">微信扫码赞赏 ¥6.66</p>
-            <img src="donate.png" alt="微信赞赏码">
-            <p style="color:#555;font-size:11px;">保存图片 → 微信扫一扫 → 赞赏</p>
+            <p style="color:#94a3b8;font-size:13px;margin-bottom:16px;">微信 / 支付宝 扫码赞赏 ¥6.66</p>
+            <div class="donate-codes">
+                <div class="donate-code-item">
+                    <img src="donate.png" alt="收款码1">
+                    <p>赞赏码 ①</p>
+                </div>
+                <div class="donate-code-item">
+                    <img src="2 donate.png" alt="收款码2">
+                    <p>赞赏码 ②</p>
+                </div>
+            </div>
+            <p style="color:#555;font-size:11px;">保存图片 → 微信/支付宝扫一扫 → 赞赏</p>
             <button class="donate-close" onclick="document.getElementById('donatePopup').classList.remove('show')">关闭</button>
         </div>
     </div>

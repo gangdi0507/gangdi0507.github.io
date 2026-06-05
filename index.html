@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>王者 & 瓦手游攻略站 | 46篇攻略每日更新</title>
     <meta name="google-site-verification" content="b0o4PmPXAEpkZE6zjTdyP94zfasjMIxJ4T1Yk25HWqw" />
-    <meta name="description" content="王者荣耀攻略、无畏契约手游教学，46篇攻略每日更新。英雄出装、连招、地图攻略、枪械教学全覆盖。孙悟空、镜、澜、花木兰、公孙离等27位英雄。">
-    <meta name="keywords" content="王者荣耀,无畏契约,手游攻略,英雄教学,出装,连招,地图攻略,枪械教学">
+    <meta name="description" content="王者荣耀攻略、无畏契约手游教学，46篇攻略每日更新。英雄出装、连招、地图攻略、枪械教学全覆盖。支持定制攻略。">
+    <meta name="keywords" content="王者荣耀,无畏契约,手游攻略,英雄教学,出装,连招,地图攻略,枪械教学,定制攻略">
     <meta name="robots" content="index, follow">
     <meta name="author" content="攻略工作站">
     <link rel="canonical" href="https://gangdi0507.github.io">
@@ -73,12 +73,15 @@
         .announcement .icon { font-size: 20px; }
         .announcement span { color: var(--sub); font-size: 13px; }
         .announcement strong { color: var(--gold); }
-        .support-section { max-width: 800px; margin: 30px auto 0; padding: 0 20px; text-align: center; }
-        .support-card { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(240,192,64,0.05)); border: 1px solid rgba(240,192,64,0.2); border-radius: 16px; padding: 28px 20px; }
-        .support-card h3 { color: #fbbf24; margin-bottom: 6px; }
+        .support-row { display: flex; gap: 16px; flex-wrap: wrap; max-width: 800px; margin: 30px auto 0; padding: 0 20px; }
+        .support-row .support-section { flex: 1; min-width: 260px; margin: 0; padding: 0; }
+        .support-card { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(240,192,64,0.05)); border: 1px solid rgba(240,192,64,0.2); border-radius: 16px; padding: 28px 20px; text-align: center; }
+        .support-card h3 { margin-bottom: 6px; }
         .support-card p { color: #94a3b8; font-size: 13px; margin-bottom: 16px; }
-        .donate-btn { display: inline-block; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; padding: 12px 28px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 15px; transition: 0.3s; cursor: pointer; border: none; }
+        .donate-btn { display: inline-block; color: #000; padding: 12px 28px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 15px; transition: 0.3s; cursor: pointer; border: none; }
         .donate-btn:hover { transform: scale(1.05); }
+        .btn-gold { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .btn-blue { background: linear-gradient(135deg, #4da6ff, #3b82f6); }
         .footer { text-align: center; padding: 30px 20px; color: var(--sub); font-size: 12px; border-top: 1px solid var(--border); margin-top: 30px; }
         .footer a { color: var(--blue); text-decoration: none; }
         #backToTop {
@@ -112,6 +115,7 @@
             .post-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; }
             .donate-code-item img { width: 140px; height: 140px; }
+            .support-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -148,7 +152,7 @@
 
         <div class="announcement">
             <span class="icon">📢</span>
-            <span><strong>46篇攻略</strong>已上线！27位王者英雄 + 5类枪械 + 9篇无畏契约教学。手机可安装成App！支持搜索🔍</span>
+            <span><strong>46篇攻略</strong>已上线！支持<strong>付费定制攻略</strong>，付 ¥9.9 指定英雄24小时出教学！</span>
         </div>
 
         <div class="section-title" id="wz"><span class="section-icon">🫅</span> 王者荣耀 — 英雄攻略</div>
@@ -207,14 +211,26 @@
             <div class="post"><span class="tag tag-other">科普</span><a href="anti-cheat.html">反作弊系统揭秘</a><p>游戏公司如何检测外挂？</p></div>
             <div class="post"><span class="tag tag-other">排行</span><a href="meta-guide.html">版本上分推荐</a><p>当前版本最强英雄排行</p></div>
         </div>
+    </div>
 
-        <div class="support-section" id="support">
+    <!-- 赞赏 + 定制攻略 双卡片 -->
+    <div class="support-row" id="support">
+        <div class="support-section">
             <div class="support-card">
                 <div style="font-size:36px;margin-bottom:8px;">🧋</div>
-                <h3>觉得攻略有用？</h3>
-                <p>请站长喝杯奶茶，支持继续更新更多攻略</p>
-                <button class="donate-btn" onclick="document.getElementById('donatePopup').classList.add('show')">🧋 请喝奶茶 (¥6.66)</button>
-                <p style="color:#555;font-size:11px;margin-top:10px;">微信/支付宝扫码赞赏 · 支持站长持续更新</p>
+                <h3 style="color:#fbbf24;">觉得攻略有用？</h3>
+                <p>请站长喝杯奶茶，支持继续更新</p>
+                <button class="donate-btn btn-gold" onclick="document.getElementById('donatePopup').classList.add('show')">🧋 请喝奶茶 (¥6.66)</button>
+                <p style="color:#555;font-size:11px;margin-top:10px;">微信/支付宝扫码赞赏</p>
+            </div>
+        </div>
+        <div class="support-section">
+            <div class="support-card" style="background:linear-gradient(135deg,rgba(77,166,255,0.1),rgba(77,166,255,0.05));border-color:rgba(77,166,255,0.2);">
+                <div style="font-size:36px;margin-bottom:8px;">✍️</div>
+                <h3 style="color:#4da6ff;">想要专属攻略？</h3>
+                <p>付 ¥9.9，24小时内出你指定英雄的完整教学</p>
+                <button class="donate-btn btn-blue" onclick="alert('请微信扫码付款后联系站长\n\n1. 保存赞赏码截图\n2. 微信扫码付 ¥9.9\n3. 备注「英雄名+你的邮箱」\n4. 24小时内攻略发到邮箱')">✍️ 定制攻略 (¥9.9)</button>
+                <p style="color:#555;font-size:11px;margin-top:10px;">付完联系站长 · 24小时交稿</p>
             </div>
         </div>
     </div>
@@ -243,6 +259,7 @@
     <div class="footer" id="about">
         <p>🎮 每日更新王者荣耀 & 无畏契约手游攻略 · 共46篇</p>
         <p style="margin-top:4px;">网站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
+        <p style="margin-top:4px;">📩 定制攻略 / 广告合作 请联系站长微信</p>
         <p style="margin-top:8px;color:#555;">© 2026 攻略工作站 · 用爱发电</p>
     </div>
 

@@ -11,88 +11,165 @@
     <meta name="author" content="攻略工作站">
     <link rel="canonical" href="https://gangdi0507.github.io">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0a0e14">
+    <meta name="theme-color" content="#0a0a1a">
     <style>
         :root {
-            --bg: #0a0e14; --card: #131820; --border: #1e2a38;
-            --gold: #f0c040; --blue: #4da6ff; --red: #ff4757;
-            --text: #c8d0da; --sub: #7a8490; --green: #2ed573;
+            --bg: #0a0a1a;
+            --card-bg: #12122a;
+            --border: #1e1e3a;
+            --gold: #ffd700;
+            --blue: #5b9eff;
+            --red: #ff5e6d;
+            --green: #4ef08e;
+            --purple: #b57bee;
+            --text: #e0e0f0;
+            --sub: #8888aa;
+            --card-hover: #1a1a38;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Noto Sans SC", sans-serif;
             background: var(--bg);
             background-image: 
-                radial-gradient(ellipse at 20% 0%, rgba(240,192,64,0.04) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(77,166,255,0.04) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 0%, rgba(255,215,0,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(91,158,255,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(180,123,238,0.03) 0%, transparent 60%);
             color: var(--text); line-height: 1.6; min-height: 100vh;
         }
         .navbar {
-            background: rgba(19,24,32,0.95); backdrop-filter: blur(20px);
+            background: rgba(10,10,26,0.9); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 14px 20px;
         }
-        .nav-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 20px; font-weight: 800; background: linear-gradient(135deg, var(--gold), #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 18px; }
-        .nav-links a { color: var(--sub); text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.2s; }
-        .nav-links a:hover { color: var(--gold); }
-        .container { max-width: 800px; margin: 0 auto; padding: 30px 20px 40px; }
-        .hero { text-align: center; padding: 30px 0 20px; }
-        .hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -1px; margin-bottom: 6px; }
-        .hero .gradient-text { background: linear-gradient(135deg, var(--gold), #ffaa00, var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--sub); font-size: 15px; }
-        .stats-bar { display: flex; gap: 12px; justify-content: center; margin: 20px 0 30px; flex-wrap: wrap; }
-        .stat-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; text-align: center; min-width: 80px; }
-        .stat-num { font-size: 22px; font-weight: 800; color: var(--gold); }
-        .stat-label { font-size: 11px; color: var(--sub); margin-top: 2px; }
-        .search-box { max-width: 800px; margin: 0 auto 20px; padding: 0 20px; }
+        .nav-inner { max-width: 850px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo { 
+            font-size: 20px; font-weight: 900; 
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .logo-icon { font-size: 26px; -webkit-text-fill-color: initial; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--sub); text-decoration: none; font-size: 13px; font-weight: 600; 
+            transition: 0.2s; padding: 6px 12px; border-radius: 8px;
+        }
+        .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .container { max-width: 850px; margin: 0 auto; padding: 30px 20px 40px; }
+        .hero { text-align: center; padding: 40px 0 20px; }
+        .hero .badge {
+            display: inline-block; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.2);
+            color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+            margin-bottom: 16px; letter-spacing: 1px;
+        }
+        .hero h1 { font-size: 38px; font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero .gradient-text { 
+            background: linear-gradient(135deg, #ffd700, #ff8c00, #ffd700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+        .hero p { color: var(--sub); font-size: 15px; margin-top: 6px; }
+        .stats-bar { display: flex; gap: 14px; justify-content: center; margin: 24px 0 30px; flex-wrap: wrap; }
+        .stat-item { 
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; 
+            padding: 14px 20px; text-align: center; min-width: 90px;
+            transition: 0.3s;
+        }
+        .stat-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+        .stat-icon { font-size: 24px; margin-bottom: 4px; }
+        .stat-num { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, var(--gold), #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 10px; color: var(--sub); margin-top: 2px; text-transform: uppercase; letter-spacing: 1px; }
+        .search-box { max-width: 850px; margin: 0 auto 20px; padding: 0 20px; }
         .search-box input {
-            width: 100%; padding: 14px 18px; border-radius: 12px;
-            border: 1px solid var(--border); background: var(--card);
-            color: #e8e8f0; font-size: 15px; outline: none; font-family: inherit;
-            transition: border 0.3s;
+            width: 100%; padding: 14px 20px; border-radius: 14px;
+            border: 2px solid var(--border); background: var(--card-bg);
+            color: #e0e0f0; font-size: 15px; outline: none; font-family: inherit;
+            transition: all 0.3s;
         }
-        .search-box input:focus { border-color: var(--gold); }
-        .section-title { font-size: 18px; font-weight: 700; margin: 28px 0 14px; display: flex; align-items: center; gap: 8px; }
-        .section-icon { font-size: 22px; }
-        .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+        .search-box input:focus { border-color: var(--gold); box-shadow: 0 0 20px rgba(255,215,0,0.08); }
+        .section-title { 
+            font-size: 18px; font-weight: 800; margin: 32px 0 16px; 
+            display: flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(91,158,255,0.05));
+            padding: 12px 16px; border-radius: 12px;
+            border-left: 3px solid var(--gold);
+        }
+        .section-title.val-title { border-left-color: var(--red); background: linear-gradient(135deg, rgba(255,94,109,0.05), rgba(91,158,255,0.03)); }
+        .section-title.other-title { border-left-color: var(--green); }
+        .section-icon { font-size: 24px; }
+        .section-count { font-size: 12px; color: var(--sub); margin-left: auto; font-weight: 500; }
+        .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
         .post {
-            background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-            padding: 18px; transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+            padding: 20px; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 8px;
         }
-        .post:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-        .post::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0; transition: 0.3s; }
-        .post:hover::before { opacity: 1; }
-        .post a { color: #e8e8f0; font-size: 15px; font-weight: 700; text-decoration: none; display: block; margin-bottom: 4px; }
-        .post .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-bottom: 6px; }
-        .tag-wz { background: rgba(240,192,64,0.15); color: var(--gold); }
-        .tag-val { background: rgba(255,71,87,0.15); color: var(--red); }
-        .tag-other { background: rgba(46,213,115,0.15); color: var(--green); }
+        .post:hover { 
+            border-color: var(--gold); transform: translateY(-3px); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4); background: var(--card-hover);
+        }
+        .post::after {
+            content: ''; position: absolute; top: -20px; right: -20px;
+            width: 60px; height: 60px; background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+            border-radius: 50%; opacity: 0; transition: 0.4s;
+        }
+        .post:hover::after { opacity: 1; }
+        .post-header { display: flex; align-items: center; gap: 10px; }
+        .post-icon { font-size: 32px; }
+        .post-info { flex: 1; }
+        .post a { 
+            color: #f0f0ff; font-size: 16px; font-weight: 700; text-decoration: none; 
+            display: block; transition: 0.2s;
+        }
+        .post:hover a { color: var(--gold); }
+        .post .tag { 
+            display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; 
+            border-radius: 20px; letter-spacing: 0.5px;
+        }
+        .tag-wz { background: rgba(255,215,0,0.12); color: var(--gold); }
+        .tag-val { background: rgba(255,94,109,0.12); color: var(--red); }
+        .tag-other { background: rgba(78,240,142,0.12); color: var(--green); }
         .post p { color: var(--sub); font-size: 12px; line-height: 1.5; }
-        .announcement { background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(77,166,255,0.06)); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
-        .announcement .icon { font-size: 20px; }
+        .announcement { 
+            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(180,123,238,0.04)); 
+            border: 1px solid var(--border); border-radius: 14px; padding: 16px 22px; 
+            margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+        }
+        .announcement .icon { font-size: 24px; }
         .announcement span { color: var(--sub); font-size: 13px; }
         .announcement strong { color: var(--gold); }
-        .support-row { display: flex; gap: 16px; flex-wrap: wrap; max-width: 800px; margin: 30px auto 0; padding: 0 20px; }
-        .support-row .support-section { flex: 1; min-width: 260px; margin: 0; padding: 0; }
-        .support-card { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(240,192,64,0.05)); border: 1px solid rgba(240,192,64,0.2); border-radius: 16px; padding: 28px 20px; text-align: center; }
+        .support-row { display: flex; gap: 18px; flex-wrap: wrap; max-width: 850px; margin: 30px auto 0; padding: 0 20px; }
+        .support-row .support-section { flex: 1; min-width: 270px; margin: 0; padding: 0; }
+        .support-card { 
+            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,215,0,0.02)); 
+            border: 1px solid rgba(255,215,0,0.15); border-radius: 18px; padding: 30px 24px; text-align: center;
+            transition: 0.3s;
+        }
+        .support-card:hover { border-color: rgba(255,215,0,0.3); transform: translateY(-2px); }
         .support-card h3 { margin-bottom: 6px; }
-        .support-card p { color: #94a3b8; font-size: 13px; margin-bottom: 16px; }
-        .donate-btn { display: inline-block; color: #000; padding: 12px 28px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 15px; transition: 0.3s; cursor: pointer; border: none; }
-        .donate-btn:hover { transform: scale(1.05); }
-        .btn-gold { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
-        .btn-blue { background: linear-gradient(135deg, #4da6ff, #3b82f6); }
-        .footer { text-align: center; padding: 30px 20px; color: var(--sub); font-size: 12px; border-top: 1px solid var(--border); margin-top: 30px; }
+        .support-card p { color: #94a3b8; font-size: 13px; margin-bottom: 18px; }
+        .donate-btn { 
+            display: inline-block; color: #000; padding: 12px 30px; border-radius: 25px; 
+            font-weight: 700; text-decoration: none; font-size: 15px; transition: 0.3s; 
+            cursor: pointer; border: none; letter-spacing: 0.5px;
+        }
+        .donate-btn:hover { transform: scale(1.06); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .btn-gold { background: linear-gradient(135deg, #ffd700, #f5a623); }
+        .btn-blue { background: linear-gradient(135deg, #5b9eff, #3d7eff); }
+        .footer { 
+            text-align: center; padding: 30px 20px; color: var(--sub); font-size: 12px; 
+            border-top: 1px solid var(--border); margin-top: 40px; 
+        }
         .footer a { color: var(--blue); text-decoration: none; }
         #backToTop {
             position: fixed; bottom: 30px; right: 30px;
-            background: var(--gold); color: #000; border: none;
-            width: 44px; height: 44px; border-radius: 50%;
+            background: linear-gradient(135deg, #ffd700, #f5a623); color: #000; border: none;
+            width: 46px; height: 46px; border-radius: 50%;
             font-size: 20px; cursor: pointer; z-index: 998;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            opacity: 0; transition: opacity 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            opacity: 0; transition: all 0.3s; font-weight: 700;
         }
         #backToTop.show { opacity: 1; }
+        #backToTop:hover { transform: scale(1.1); }
         .donate-popup {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 9999;
@@ -100,22 +177,30 @@
         }
         .donate-popup.show { display: flex; }
         .donate-popup-content {
-            background: #1a2634; border-radius: 16px; padding: 30px;
+            background: #1a1a38; border-radius: 20px; padding: 30px;
             text-align: center; max-width: 460px; width: 90%;
+            border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         .donate-codes { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
-        .donate-code-item img { width: 180px; height: 180px; border-radius: 12px; }
-        .donate-code-item p { color: #7a8490; font-size: 11px; margin-top: 6px; }
-        .donate-close {
-            margin-top: 12px; background: #2a3a4a; color: #fff; border: none;
-            padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 14px;
+        .donate-code-item { 
+            background: rgba(255,255,255,0.03); border-radius: 14px; padding: 12px;
+            transition: 0.3s;
         }
+        .donate-code-item:hover { background: rgba(255,255,255,0.06); }
+        .donate-code-item img { width: 170px; height: 170px; border-radius: 12px; }
+        .donate-code-item p { color: #8888aa; font-size: 11px; margin-top: 8px; }
+        .donate-close {
+            margin-top: 16px; background: rgba(255,255,255,0.06); color: #fff; border: none;
+            padding: 10px 24px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: 0.3s;
+        }
+        .donate-close:hover { background: rgba(255,255,255,0.12); }
         @media (max-width: 600px) {
-            .hero h1 { font-size: 26px; }
+            .hero h1 { font-size: 28px; }
             .post-grid { grid-template-columns: 1fr; }
-            .nav-links { gap: 10px; }
-            .donate-code-item img { width: 140px; height: 140px; }
+            .nav-links { gap: 8px; }
             .support-row { flex-direction: column; }
+            .donate-code-item img { width: 130px; height: 130px; }
+            .post-icon { font-size: 24px; }
         }
     </style>
 </head>
@@ -123,11 +208,11 @@
 
     <nav class="navbar">
         <div class="nav-inner">
-            <div class="logo">⚡ 攻略工作站</div>
+            <div class="logo"><span class="logo-icon">⚡</span>攻略工作站</div>
             <div class="nav-links">
                 <a href="#wz">王者荣耀</a>
                 <a href="#val">无畏契约</a>
-                <a href="#support">支持站长</a>
+                <a href="#support">支持</a>
             </div>
         </div>
     </nav>
@@ -135,15 +220,19 @@
     <div class="container">
         
         <div class="hero">
-            <h1><span style="color:#e8e8f0;">🎮 王者 & 瓦</span><br><span class="gradient-text">手游攻略站</span></h1>
-            <p>每日更新 · 出装连招 · 地图教学 · 枪械解析 · <strong>46篇攻略</strong></p>
+            <div class="badge">🏆 46篇攻略 · 每日更新</div>
+            <h1>
+                <span style="color:#e0e0f0;">🎮 王者 & 瓦</span><br>
+                <span class="gradient-text">手游攻略站</span>
+            </h1>
+            <p>出装连招 · 地图教学 · 枪械解析 · 版本排行</p>
         </div>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-num">27</div><div class="stat-label">王者英雄</div></div>
-            <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">枪械教学</div></div>
-            <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">无畏攻略</div></div>
-            <div class="stat-item"><div class="stat-num">📱</div><div class="stat-label">可安装App</div></div>
+            <div class="stat-item"><div class="stat-icon">👑</div><div class="stat-num">27</div><div class="stat-label">王者英雄</div></div>
+            <div class="stat-item"><div class="stat-icon">🔫</div><div class="stat-num">5</div><div class="stat-label">枪械教学</div></div>
+            <div class="stat-item"><div class="stat-icon">🗺️</div><div class="stat-num">9</div><div class="stat-label">无畏攻略</div></div>
+            <div class="stat-item"><div class="stat-icon">📱</div><div class="stat-num">PWA</div><div class="stat-label">可安装App</div></div>
         </div>
 
         <div class="search-box">
@@ -152,165 +241,85 @@
 
         <div class="announcement">
             <span class="icon">📢</span>
-            <span><strong>46篇攻略</strong>已上线！支持<strong>付费定制攻略</strong>，付 ¥9.9 指定英雄24小时出教学！</span>
+            <span><strong>46篇攻略</strong>已上线！支持<strong>付费定制攻略</strong>，¥9.9 指定英雄24小时出教学！</span>
         </div>
 
-        <div class="section-title" id="wz"><span class="section-icon">🫅</span> 王者荣耀 — 英雄攻略</div>
+        <div class="section-title" id="wz">
+            <span class="section-icon">🫅</span>王者荣耀 — 英雄攻略
+            <span class="section-count">27位英雄</span>
+        </div>
         <div class="post-grid">
-            <div class="post"><span class="tag tag-wz">刺客</span><a href="sunwukong.html">孙悟空</a><p>最强出装 & 连招教学，存棍跳棍一棒秒脆皮</p></div>
-            <div class="post"><span class="tag tag-wz">刺客</span><a href="jing.html">镜</a><p>飞雷神连招详解，从入门到满图飞</p></div>
-            <div class="post"><span class="tag tag-wz">刺客</span><a href="lan.html">澜</a><p>鲨鱼王打野，残血收割机抓人节奏</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="machao.html">马超</a><p>插秧王连招教学，扔枪捡枪戳全场</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="lvbu.html">吕布</a><p>战士一哥，真实伤害砍全场</p></div>
-            <div class="post"><span class="tag tag-wz">坦克</span><a href="lianpo.html">廉颇</a><p>最强开团坦克，团战站到最后</p></div>
-            <div class="post"><span class="tag tag-wz">法师</span><a href="diaochan.html">貂蝉</a><p>法刺一姐，跳舞收割全场</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="huamulan.html">花木兰</a><p>双形态战士，轻剑重剑一套秒</p></div>
-            <div class="post"><span class="tag tag-wz">射手</span><a href="gongsunli.html">公孙离</a><p>最灵活射手，伞舞位移秀全场</p></div>
-            <div class="post"><span class="tag tag-wz">射手</span><a href="bailishouyue.html">百里守约</a><p>狙击手一枪半管血，千里收人头</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="kai.html">铠</a><p>一刀流铠爹，开大砍全场</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="gongben.html">宫本武藏</a><p>无敌剑圣，大招锁定必杀</p></div>
-            <div class="post"><span class="tag tag-wz">法师</span><a href="shangguanwaner.html">上官婉儿</a><p>法刺女王，上天入地秒C位</p></div>
-            <div class="post"><span class="tag tag-wz">射手</span><a href="sunshangxiang.html">孙尚香</a><p>大小姐翻滚一炮，秒脆皮只需一下</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="lixin.html">李信</a><p>暗信带线光信打团，双形态切换</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="guanyu.html">关羽</a><p>赤兔马推推推，团战搅屎棍</p></div>
-            <div class="post"><span class="tag tag-wz">辅助</span><a href="zhangfei.html">张飞</a><p>最强辅助，大招吼五个</p></div>
-            <div class="post"><span class="tag tag-wz">射手</span><a href="luban.html">鲁班七号</a><p>小短腿站撸王，后期输出爆炸</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="yase.html">亚瑟</a><p>新手战神，沉默大招一套带走</p></div>
-            <div class="post"><span class="tag tag-wz">战士</span><a href="zhaoyun.html">赵云</a><p>七进七出打野，残血反杀王</p></div>
-            <div class="post"><span class="tag tag-wz">法师</span><a href="buzhihuowu.html">不知火舞</a><p>法刺女王，一套秒脆皮</p></div>
-            <div class="post"><span class="tag tag-wz">刺客</span><a href="juyoujing.html">橘右京</a><p>燕返跳斩，一套秒脆皮</p></div>
-            <div class="post"><span class="tag tag-wz">法师</span><a href="ganjiang.html">干将莫邪</a><p>远程炮台，四剑齐发秒脆皮</p></div>
-            <div class="post"><span class="tag tag-wz">法师</span><a href="wangzhaojun.html">王昭君</a><p>冰冻女王，大招覆盖全屏</p></div>
-            <div class="post"><span class="tag tag-wz">辅助</span><a href="sunbin.html">孙膑</a><p>最强节奏辅助，加速拉扯无敌</p></div>
-            <div class="post"><span class="tag tag-wz">刺客</span><a href="hanxin.html">韩信</a><p>偷塔之王，满图跑打不过就跑</p></div>
-            <div class="post"><span class="tag tag-wz">射手</span><a href="makeboluo.html">马可波罗</a><p>真伤射手，坦克杀手</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🐵</span><div class="post-info"><span class="tag tag-wz">刺客</span><a href="sunwukong.html">孙悟空</a></div></div><p>存棍跳棍一棒秒脆皮 · 最强打野</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🪞</span><div class="post-info"><span class="tag tag-wz">刺客</span><a href="jing.html">镜</a></div></div><p>飞雷神连招详解 · 从入门到满图飞</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🦈</span><div class="post-info"><span class="tag tag-wz">刺客</span><a href="lan.html">澜</a></div></div><p>鲨鱼王打野 · 残血收割机</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🏇</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="machao.html">马超</a></div></div><p>插秧王连招教学 · 扔枪捡枪戳全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">⚔️</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="lvbu.html">吕布</a></div></div><p>战士一哥 · 真实伤害砍全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🛡️</span><div class="post-info"><span class="tag tag-wz">坦克</span><a href="lianpo.html">廉颇</a></div></div><p>最强开团坦克 · 团战站到最后</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🌸</span><div class="post-info"><span class="tag tag-wz">法师</span><a href="diaochan.html">貂蝉</a></div></div><p>法刺一姐 · 跳舞收割全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🗡️</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="huamulan.html">花木兰</a></div></div><p>双形态战士 · 轻剑重剑一套秒</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🌂</span><div class="post-info"><span class="tag tag-wz">射手</span><a href="gongsunli.html">公孙离</a></div></div><p>最灵活射手 · 伞舞位移秀全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🎯</span><div class="post-info"><span class="tag tag-wz">射手</span><a href="bailishouyue.html">百里守约</a></div></div><p>狙击手一枪半管血 · 千里收人头</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">👹</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="kai.html">铠</a></div></div><p>一刀流铠爹 · 开大砍全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">⚡</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="gongben.html">宫本武藏</a></div></div><p>无敌剑圣 · 大招锁定必杀</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">✒️</span><div class="post-info"><span class="tag tag-wz">法师</span><a href="shangguanwaner.html">上官婉儿</a></div></div><p>法刺女王 · 上天入地秒C位</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔫</span><div class="post-info"><span class="tag tag-wz">射手</span><a href="sunshangxiang.html">孙尚香</a></div></div><p>大小姐翻滚一炮 · 秒脆皮只需一下</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🌗</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="lixin.html">李信</a></div></div><p>暗信带线光信打团 · 双形态切换</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🐴</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="guanyu.html">关羽</a></div></div><p>赤兔马推推推 · 团战搅屎棍</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">😤</span><div class="post-info"><span class="tag tag-wz">辅助</span><a href="zhangfei.html">张飞</a></div></div><p>最强辅助 · 大招吼五个</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🤖</span><div class="post-info"><span class="tag tag-wz">射手</span><a href="luban.html">鲁班七号</a></div></div><p>小短腿站撸王 · 后期输出爆炸</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🛡️</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="yase.html">亚瑟</a></div></div><p>新手战神 · 沉默大招一套带走</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🐉</span><div class="post-info"><span class="tag tag-wz">战士</span><a href="zhaoyun.html">赵云</a></div></div><p>七进七出打野 · 残血反杀王</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔥</span><div class="post-info"><span class="tag tag-wz">法师</span><a href="buzhihuowu.html">不知火舞</a></div></div><p>法刺女王 · 一套秒脆皮</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🍊</span><div class="post-info"><span class="tag tag-wz">刺客</span><a href="juyoujing.html">橘右京</a></div></div><p>燕返跳斩 · 一套秒脆皮</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🎯</span><div class="post-info"><span class="tag tag-wz">法师</span><a href="ganjiang.html">干将莫邪</a></div></div><p>远程炮台 · 四剑齐发秒脆皮</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">❄️</span><div class="post-info"><span class="tag tag-wz">法师</span><a href="wangzhaojun.html">王昭君</a></div></div><p>冰冻女王 · 大招覆盖全屏</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">⏱️</span><div class="post-info"><span class="tag tag-wz">辅助</span><a href="sunbin.html">孙膑</a></div></div><p>最强节奏辅助 · 加速拉扯无敌</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🗡️</span><div class="post-info"><span class="tag tag-wz">刺客</span><a href="hanxin.html">韩信</a></div></div><p>偷塔之王 · 满图跑打不过就跑</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">💥</span><div class="post-info"><span class="tag tag-wz">射手</span><a href="makeboluo.html">马可波罗</a></div></div><p>真伤射手 · 坦克杀手</p></div>
         </div>
 
-        <div class="section-title" id="val"><span class="section-icon">🔫</span> 无畏契约 — 地图 & 枪械 & 英雄</div>
+        <div class="section-title val-title" id="val">
+            <span class="section-icon">🔫</span>无畏契约 — 地图 & 枪械 & 英雄
+            <span class="section-count">14篇攻略</span>
+        </div>
         <div class="post-grid">
-            <div class="post"><span class="tag tag-val">地图</span><a href="bind-map.html">源工重镇</a><p>新手必学防守点位，传送门战术</p></div>
-            <div class="post"><span class="tag tag-val">地图</span><a href="val-haven.html">亚海悬城</a><p>唯一三点图，攻防战术详解</p></div>
-            <div class="post"><span class="tag tag-val">地图</span><a href="val-nihong.html">霓虹町</a><p>窄口战术，喷子冲锋枪天堂</p></div>
-            <div class="post"><span class="tag tag-val">地图</span><a href="val-yinshi.html">隐世修所</a><p>传送门战术，快速转点绕后</p></div>
-            <div class="post"><span class="tag tag-val">步枪</span><a href="val-rifle.html">步枪教学</a><p>M4、狂徒、M16 压枪技巧</p></div>
-            <div class="post"><span class="tag tag-val">冲锋枪</span><a href="val-smg.html">冲锋枪教学</a><p>UMP45、MP5、P90 近战之王</p></div>
-            <div class="post"><span class="tag tag-val">狙击枪</span><a href="val-sniper.html">狙击枪教学</a><p>AWP瞬狙、跳狙、架点技巧</p></div>
-            <div class="post"><span class="tag tag-val">手枪</span><a href="val-pistol.html">手枪教学</a><p>沙漠之鹰、USP、Glock 手枪局必胜</p></div>
-            <div class="post"><span class="tag tag-val">霰弹枪</span><a href="val-shotgun.html">霰弹枪教学</a><p>连喷、单喷、短喷 近战秒杀</p></div>
-            <div class="post"><span class="tag tag-val">英雄</span><a href="val-jiefeng.html">捷风</a><p>最灵活决斗者，飞来飞去秀全场</p></div>
-            <div class="post"><span class="tag tag-val">英雄</span><a href="val-lianyu.html">炼狱</a><p>最强烟位，掌控战场视野</p></div>
-            <div class="post"><span class="tag tag-val">英雄</span><a href="val-ling.html">零</a><p>最强守卫者，绊索摄像头控全场</p></div>
-            <div class="post"><span class="tag tag-val">英雄</span><a href="val-qile.html">奇乐</a><p>最强哨兵，炮塔机器人守全场</p></div>
-            <div class="post"><span class="tag tag-val">英雄</span><a href="val-huonan.html">火男</a><p>最强闪位，自回血突破之王</p></div>
-            <div class="post"><span class="tag tag-val">技巧</span><a href="val-advanced.html">进阶技巧</a><p>急停、预瞄、身法、经济管理</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🏭</span><div class="post-info"><span class="tag tag-val">地图</span><a href="bind-map.html">源工重镇</a></div></div><p>新手必学防守点位 · 传送门战术</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🏰</span><div class="post-info"><span class="tag tag-val">地图</span><a href="val-haven.html">亚海悬城</a></div></div><p>唯一三点图 · 攻防战术详解</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🌸</span><div class="post-info"><span class="tag tag-val">地图</span><a href="val-nihong.html">霓虹町</a></div></div><p>窄口战术 · 喷子冲锋枪天堂</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🏯</span><div class="post-info"><span class="tag tag-val">地图</span><a href="val-yinshi.html">隐世修所</a></div></div><p>传送门战术 · 快速转点绕后</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔫</span><div class="post-info"><span class="tag tag-val">步枪</span><a href="val-rifle.html">步枪教学</a></div></div><p>M4、狂徒、M16 压枪技巧</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">💨</span><div class="post-info"><span class="tag tag-val">冲锋枪</span><a href="val-smg.html">冲锋枪教学</a></div></div><p>UMP45、MP5、P90 近战之王</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔭</span><div class="post-info"><span class="tag tag-val">狙击枪</span><a href="val-sniper.html">狙击枪教学</a></div></div><p>AWP瞬狙、跳狙、架点技巧</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔫</span><div class="post-info"><span class="tag tag-val">手枪</span><a href="val-pistol.html">手枪教学</a></div></div><p>沙漠之鹰、USP、Glock 手枪局必胜</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">💥</span><div class="post-info"><span class="tag tag-val">霰弹枪</span><a href="val-shotgun.html">霰弹枪教学</a></div></div><p>连喷、单喷、短喷 近战秒杀</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">💨</span><div class="post-info"><span class="tag tag-val">英雄</span><a href="val-jiefeng.html">捷风</a></div></div><p>最灵活决斗者 · 飞来飞去秀全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔥</span><div class="post-info"><span class="tag tag-val">英雄</span><a href="val-lianyu.html">炼狱</a></div></div><p>最强烟位 · 掌控战场视野</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🕵️</span><div class="post-info"><span class="tag tag-val">英雄</span><a href="val-ling.html">零</a></div></div><p>最强守卫者 · 绊索摄像头控全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🤖</span><div class="post-info"><span class="tag tag-val">英雄</span><a href="val-qile.html">奇乐</a></div></div><p>最强哨兵 · 炮塔机器人守全场</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🔥</span><div class="post-info"><span class="tag tag-val">英雄</span><a href="val-huonan.html">火男</a></div></div><p>最强闪位 · 自回血突破之王</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🎯</span><div class="post-info"><span class="tag tag-val">技巧</span><a href="val-advanced.html">进阶技巧</a></div></div><p>急停、预瞄、身法、经济管理</p></div>
         </div>
 
-        <div class="section-title" id="other"><span class="section-icon">📚</span> 其他攻略 & 科普</div>
+        <div class="section-title other-title" id="other">
+            <span class="section-icon">📚</span>其他攻略 & 科普
+            <span class="section-count">3篇</span>
+        </div>
         <div class="post-grid">
-            <div class="post"><span class="tag tag-other">设置</span><a href="settings-guide.html">最佳设置优化</a><p>帧率画质按键布局，职业选手同款</p></div>
-            <div class="post"><span class="tag tag-other">科普</span><a href="anti-cheat.html">反作弊系统揭秘</a><p>游戏公司如何检测外挂？</p></div>
-            <div class="post"><span class="tag tag-other">排行</span><a href="meta-guide.html">版本上分推荐</a><p>当前版本最强英雄排行</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">⚙️</span><div class="post-info"><span class="tag tag-other">设置</span><a href="settings-guide.html">最佳设置优化</a></div></div><p>帧率画质按键布局 · 职业选手同款</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">🛡️</span><div class="post-info"><span class="tag tag-other">科普</span><a href="anti-cheat.html">反作弊系统揭秘</a></div></div><p>游戏公司如何检测外挂？</p></div>
+            <div class="post"><div class="post-header"><span class="post-icon">📊</span><div class="post-info"><span class="tag tag-other">排行</span><a href="meta-guide.html">版本上分推荐</a></div></div><p>当前版本最强英雄排行</p></div>
         </div>
     </div>
 
-    <!-- 赞赏 + 定制攻略 双卡片 -->
     <div class="support-row" id="support">
         <div class="support-section">
             <div class="support-card">
-                <div style="font-size:36px;margin-bottom:8px;">🧋</div>
-                <h3 style="color:#fbbf24;">觉得攻略有用？</h3>
+                <div style="font-size:40px;margin-bottom:10px;">🧋</div>
+                <h3 style="color:#ffd700;">觉得攻略有用？</h3>
                 <p>请站长喝杯奶茶，支持继续更新</p>
                 <button class="donate-btn btn-gold" onclick="document.getElementById('donatePopup').classList.add('show')">🧋 请喝奶茶 (¥6.66)</button>
-                <p style="color:#555;font-size:11px;margin-top:10px;">微信/支付宝扫码赞赏</p>
+                <p style="color:#666;font-size:10px;margin-top:10px;">微信/支付宝扫码赞赏</p>
             </div>
         </div>
         <div class="support-section">
-            <div class="support-card" style="background:linear-gradient(135deg,rgba(77,166,255,0.1),rgba(77,166,255,0.05));border-color:rgba(77,166,255,0.2);">
-                <div style="font-size:36px;margin-bottom:8px;">✍️</div>
-                <h3 style="color:#4da6ff;">想要专属攻略？</h3>
-                <p>付 ¥9.9，24小时内出你指定英雄的完整教学</p>
-                <button class="donate-btn btn-blue" onclick="alert('请微信扫码付款后联系站长\n\n1. 保存赞赏码截图\n2. 微信扫码付 ¥9.9\n3. 备注「英雄名+你的邮箱」\n4. 24小时内攻略发到邮箱')">✍️ 定制攻略 (¥9.9)</button>
-                <p style="color:#555;font-size:11px;margin-top:10px;">付完联系站长 · 24小时交稿</p>
-            </div>
-        </div>
-    </div>
-
-    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
-
-    <div class="donate-popup" id="donatePopup" onclick="this.classList.remove('show')">
-        <div class="donate-popup-content" onclick="event.stopPropagation()">
-            <h3 style="color:#fbbf24;margin-bottom:12px;">🧋 请站长喝杯奶茶</h3>
-            <p style="color:#94a3b8;font-size:13px;margin-bottom:16px;">微信 / 支付宝 扫码赞赏 ¥6.66</p>
-            <div class="donate-codes">
-                <div class="donate-code-item">
-                    <img src="donate.png" alt="收款码1">
-                    <p>赞赏码 ①</p>
-                </div>
-                <div class="donate-code-item">
-                    <img src="2 donate.png" alt="收款码2">
-                    <p>赞赏码 ②</p>
-                </div>
-            </div>
-            <p style="color:#555;font-size:11px;">保存图片 → 微信/支付宝扫一扫 → 赞赏</p>
-            <button class="donate-close" onclick="document.getElementById('donatePopup').classList.remove('show')">关闭</button>
-        </div>
-    </div>
-
-    <div class="footer" id="about">
-        <p>🎮 每日更新王者荣耀 & 无畏契约手游攻略 · 共46篇</p>
-        <p style="margin-top:4px;">网站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
-        <p style="margin-top:4px;">📩 定制攻略 / 广告合作 请联系站长微信</p>
-        <p style="margin-top:8px;color:#555;">© 2026 攻略工作站 · 用爱发电</p>
-    </div>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-                    console.log('Service Worker 注册成功');
-                }).catch(function(err) {
-                    console.log('Service Worker 注册失败: ', err);
-                });
-            });
-        }
-
-        const searchInput = document.getElementById('searchInput');
-        const allPosts = document.querySelectorAll('.post');
-        const postGrids = document.querySelectorAll('.post-grid');
-        const sectionTitles = document.querySelectorAll('.section-title');
-
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            
-            if (query === '') {
-                postGrids.forEach(g => g.style.display = 'grid');
-                sectionTitles.forEach(t => t.style.display = 'flex');
-                allPosts.forEach(p => p.style.display = 'block');
-                return;
-            }
-            
-            sectionTitles.forEach(t => t.style.display = 'block');
-            postGrids.forEach(g => g.style.display = 'grid');
-            
-            allPosts.forEach(post => {
-                const text = post.textContent.toLowerCase();
-                if (text.includes(query)) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        });
-
-        const backBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 400) {
-                backBtn.classList.add('show');
-            } else {
-                backBtn.classList.remove('show');
-            }
-        });
-    </script>
-
-</body>
-</html>
+            <div class="support-card" style="background:linear-gradient(135deg,rgba(91,158,255,0.08),rgba(91,158,255,0.02));border-color:rg

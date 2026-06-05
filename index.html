@@ -11,6 +11,7 @@
     <link rel="canonical" href="https://gangdi0507.github.io">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0a0e14">
+    <!-- Google AdSense 代码位：审核通过后把代码粘贴在这里 -->
     <style>
         :root {
             --bg: #0a0e14; --card: #131820; --border: #1e2a38;
@@ -44,6 +45,14 @@
         .stat-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; text-align: center; min-width: 80px; }
         .stat-num { font-size: 22px; font-weight: 800; color: var(--gold); }
         .stat-label { font-size: 11px; color: var(--sub); margin-top: 2px; }
+        .search-box { max-width: 800px; margin: 0 auto 20px; padding: 0 20px; }
+        .search-box input {
+            width: 100%; padding: 14px 18px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--card);
+            color: #e8e8f0; font-size: 15px; outline: none; font-family: inherit;
+            transition: border 0.3s;
+        }
+        .search-box input:focus { border-color: var(--gold); }
         .section-title { font-size: 18px; font-weight: 700; margin: 28px 0 14px; display: flex; align-items: center; gap: 8px; }
         .section-icon { font-size: 22px; }
         .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
@@ -60,12 +69,22 @@
         .tag-val { background: rgba(255,71,87,0.15); color: var(--red); }
         .tag-other { background: rgba(46,213,115,0.15); color: var(--green); }
         .post p { color: var(--sub); font-size: 12px; line-height: 1.5; }
+        .ad-placeholder { background: rgba(240,192,64,0.05); border: 1px dashed rgba(240,192,64,0.2); border-radius: 12px; padding: 20px; text-align: center; margin: 20px 0; color: #7a8490; font-size: 13px; }
         .announcement { background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(77,166,255,0.06)); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
         .announcement .icon { font-size: 20px; }
         .announcement span { color: var(--sub); font-size: 13px; }
         .announcement strong { color: var(--gold); }
         .footer { text-align: center; padding: 30px 20px; color: var(--sub); font-size: 12px; border-top: 1px solid var(--border); margin-top: 30px; }
         .footer a { color: var(--blue); text-decoration: none; }
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--gold); color: #000; border: none;
+            width: 44px; height: 44px; border-radius: 50%;
+            font-size: 20px; cursor: pointer; z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        #backToTop.show { opacity: 1; }
         @media (max-width: 600px) {
             .hero h1 { font-size: 26px; }
             .post-grid { grid-template-columns: 1fr; }
@@ -94,16 +113,24 @@
         </div>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">王者英雄</div></div>
+            <div class="stat-item"><div class="stat-num">27</div><div class="stat-label">王者英雄</div></div>
             <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">枪械教学</div></div>
-            <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">无畏英雄/地图</div></div>
+            <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">无畏攻略</div></div>
             <div class="stat-item"><div class="stat-num">📱</div><div class="stat-label">可安装App</div></div>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索攻略...（如：孙悟空、狂徒、源工重镇、飞雷神）">
         </div>
 
         <div class="announcement">
             <span class="icon">📢</span>
-            <span><strong>46篇攻略</strong>已上线！20位王者英雄 + 5类枪械 + 8篇无畏契约教学。手机可安装成App！</span>
+            <span><strong>46篇攻略</strong>已上线！27位王者英雄 + 5类枪械 + 9篇无畏契约教学。手机可安装成App！支持搜索🔍</span>
         </div>
+
+        <!-- 广告位1 -->
+        <div class="ad-placeholder">📢 广告位（AdSense审核通过后放广告代码）</div>
 
         <div class="section-title" id="wz"><span class="section-icon">🫅</span> 王者荣耀 — 英雄攻略</div>
         <div class="post-grid">
@@ -136,6 +163,9 @@
             <div class="post"><span class="tag tag-wz">射手</span><a href="makeboluo.html">马可波罗</a><p>真伤射手，坦克杀手</p></div>
         </div>
 
+        <!-- 广告位2 -->
+        <div class="ad-placeholder">📢 广告位（AdSense审核通过后放广告代码）</div>
+
         <div class="section-title" id="val"><span class="section-icon">🔫</span> 无畏契约 — 地图 & 枪械 & 英雄</div>
         <div class="post-grid">
             <div class="post"><span class="tag tag-val">地图</span><a href="bind-map.html">源工重镇</a><p>新手必学防守点位，传送门战术</p></div>
@@ -163,6 +193,9 @@
         </div>
     </div>
 
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+
     <div class="footer" id="about">
         <p>🎮 每日更新王者荣耀 & 无畏契约手游攻略 · 共46篇</p>
         <p style="margin-top:4px;">网站：<a href="https://gangdi0507.github.io">gangdi0507.github.io</a></p>
@@ -170,6 +203,7 @@
     </div>
 
     <script>
+        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
@@ -179,6 +213,56 @@
                 });
             });
         }
+
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        const allPosts = document.querySelectorAll('.post');
+        const postGrids = document.querySelectorAll('.post-grid');
+        const sectionTitles = document.querySelectorAll('.section-title');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query === '') {
+                postGrids.forEach(g => g.style.display = 'grid');
+                sectionTitles.forEach(t => t.style.display = 'flex');
+                allPosts.forEach(p => p.style.display = 'block');
+                return;
+            }
+            
+            sectionTitles.forEach(t => t.style.display = 'block');
+            postGrids.forEach(g => g.style.display = 'grid');
+            
+            let foundCount = 0;
+            allPosts.forEach(post => {
+                const text = post.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    post.style.display = 'block';
+                    foundCount++;
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            // 隐藏空的分区标题（可选）
+            document.querySelectorAll('.section-title').forEach(title => {
+                let nextGrid = title.nextElementSibling;
+                if (nextGrid && nextGrid.classList.contains('post-grid')) {
+                    let visiblePosts = nextGrid.querySelectorAll('.post[style*="display: block"], .post:not([style*="display: none"])');
+                    // 简化处理：如果搜索词不为空，始终显示标题
+                }
+            });
+        });
+
+        // 返回顶部按钮
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
     </script>
 
 </body>
